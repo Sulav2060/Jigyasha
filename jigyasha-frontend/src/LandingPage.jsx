@@ -9,6 +9,7 @@ import WhyJigyasha from "./components/LandingPage/WhyJigyasha"
 import Testimonials from "./components/LandingPage/Testimonials"
 import FAQ from "./components/LandingPage/FAQ"
 import Footer from "./components/LandingPage/Footer"
+import logo from "./assets/logo.jpeg"
 
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -66,7 +67,7 @@ export default function LandingPage() {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
               <a href="/" className="flex items-center">
-                <img src="src/assets/logo.jpeg" alt="Jigyasha" className="h-10" />
+                <img src={logo} alt="Jigyasha" className="h-10" />
                 <span className="ml-1 text-2xl text-yellow-500">.</span>
               </a>
             </div>
