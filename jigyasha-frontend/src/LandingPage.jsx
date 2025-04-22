@@ -66,7 +66,7 @@ export default function LandingPage() {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
               <a href="/" className="flex items-center">
-                <span className="text-2xl font-bold text-blue-700">Jigyasha</span>
+                <img src="src/assets/logo.jpeg" alt="Jigyasha" className="h-10" />
                 <span className="ml-1 text-2xl text-yellow-500">.</span>
               </a>
             </div>
