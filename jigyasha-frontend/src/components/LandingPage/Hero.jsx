@@ -42,8 +42,8 @@ const Hero = () => {
                     <div className="absolute -top-6 -left-6 w-24 h-24 rounded-lg bg-yellow-500 opacity-20"></div>
                     <div className="absolute -bottom-6 -right-6 w-24 h-24 rounded-lg bg-green-500 opacity-20"></div>
                     <div className="relative bg-white p-2 rounded-lg shadow-xl">
-                        <img src="https://i.ibb.co/qFW5FFS8/stock.jpg" alt="Live class in session" className="rounded w-full" />
-                        <div className="absolute bottom-6 left-6 right-6 p-4 rounded-lg shadow-lg bg-white bg-opacity-90 backdrop-blur-sm">
+                        <img src="https://i.ibb.co/ZpzgJfwS/j.jpg" alt="Live class in session" className="rounded w-full" />
+                       {/* <div className="absolute bottom-6 left-6 right-6 p-4 rounded-lg shadow-lg bg-white bg-opacity-90 backdrop-blur-sm">
                             <div className="flex items-center">
                                 <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-700 text-white">
                                     <Video size={20} />
@@ -59,7 +59,7 @@ const Hero = () => {
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
