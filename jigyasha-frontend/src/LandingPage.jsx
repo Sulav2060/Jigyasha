@@ -169,7 +169,8 @@ export default function LandingPage() {
                         <Calendar size={16} className="mr-2" />
                         <span className="text-center">Session on: {course.nextSession}</span>
                       </div>
-                      <a href="https://magicwords.com.np/events"
+                      <a 
+                      // href="https://magicwords.com.np/events"
                         className="block text-center py-2 rounded-md bg-blue-700 text-white"
                         target="_blank"
                         rel="noopener noreferrer">
@@ -184,7 +185,7 @@ export default function LandingPage() {
 
             <div className="text-center mt-10">
               <a
-                href="https://magicwords.com.np/events"
+                // href="https://magicwords.com.np/events"
                 className="inline-flex items-center px-6 py-3 border border-blue-700 rounded-md font-medium text-blue-700"
                 target="_blank"
                 rel="noopener noreferrer"
