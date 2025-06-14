@@ -14,17 +14,22 @@ import logo from "./assets/logo.jpeg"
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeCategory, setActiveCategory] = useState("all")
+  // State to store the courses fetched from the API
   const [featuredCourses, setFeaturedCourses] = useState([])
 
+  // Derived state: courses to be displayed (filtered or all)
   const filteredCourses = activeCategory === "all"
     ? featuredCourses
     : featuredCourses.filter((course) => course.category === activeCategory)
 
+  // useEffect to fetch courses when the component mounts
   useEffect(() => {
     const fetchCourses = async () => {
       try {
+        // Fetching data from the API
         const response = await fetch(`${import.meta.env.VITE_API_URL}posts`)
         const data = await response.json()
+        // Storing the fetched data in the state
         setFeaturedCourses(data)
       } catch (error) {
         console.error("Failed to fetch courses:", error)
@@ -32,7 +37,7 @@ export default function LandingPage() {
     }
 
     fetchCourses()
-  }, [])
+  }, []) // Empty dependency array means this runs once on mount
 
 
   const [email, setEmail] = useState('');
@@ -130,13 +135,12 @@ export default function LandingPage() {
               </p>
             </div>
 
-            {/* Courses Grid */}
-
+            {/* Courses Grid - Mapping over fetched data to display classes */}
             <div className="flex flex-wrap justify-center gap-6">
-
               {filteredCourses.map((course) => (
                 <div key={course.id} className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow flex flex-col h-full w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] max-w-xs mx-auto">
                   <div className="relative">
+                    {/* Using course.image from API data */}
                     <img src={course.image || "/placeholder.svg"} alt={course.title} className="w-full h-48 object-cover" />
                     <div className="absolute top-3 right-3 text-xs font-bold px-2 py-1 rounded bg-yellow-500 text-gray-900">
                       LIVE CLASS
@@ -144,33 +148,41 @@ export default function LandingPage() {
                   </div>
                   <div className="p-5 flex flex-col flex-grow">
                     <div className="text-center mb-2 text-gray-500">
+                      {/* If your API provides course.category, you can display it here */}
                       {/* <span className="capitalize text-sm">{course.category}</span> */}
                     </div>
+                    {/* Using course.title from API data */}
                     <h3 className="text-lg font-bold mb-2 text-gray-900 text-center line-clamp-2 h-14 flex items-center justify-center">
                       {course.title}
                     </h3>
                     <div className="flex items-center justify-center mb-3">
+                      {/* Instructor image is currently hardcoded, but alt text uses API data */}
                       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0hA1XQ-BQxpGvqm-JrDRXhWDLqczIfze_3Q&s" alt={course.instructor} className="w-8 h-8 rounded-full mr-2" />
+                      {/* Using course.instructor from API data */}
                       <span className="text-sm text-gray-700">{course.instructor}</span>
                     </div>
                     <div className="flex items-center justify-center mb-3">
                       <div className="flex items-center mr-4">
                         <Star size={16} className="text-amber-500 fill-amber-500" />
+                        {/* Using course.rating from API data */}
                         <span className="ml-1 text-sm font-medium">{course.rating}</span>
+                        {/* Using course.students from API data */}
                         <span className="ml-1 text-xs text-gray-500">({course.students})</span>
                       </div>
                       <div className="flex items-center text-xs text-gray-500">
                         <Clock size={14} className="mr-1" />
+                        {/* Time is currently hardcoded. If API provides time, use course.time or similar */}
                         <span>5:00 AM</span>
                       </div>
                     </div>
                     <div className="mt-auto pt-3 border-t">
                       <div className="flex items-center justify-center text-sm mb-3 text-gray-600">
                         <Calendar size={16} className="mr-2" />
+                        {/* Using course.nextSession from API data */}
                         <span className="text-center">Session on: {course.nextSession}</span>
                       </div>
-                      <a 
-                      // href="https://magicwords.com.np/events"
+                      <a
+                        // href="https://magicwords.com.np/events" // Link can be made dynamic if API provides a URL
                         className="block text-center py-2 rounded-md bg-blue-700 text-white"
                         target="_blank"
                         rel="noopener noreferrer">
@@ -181,7 +193,6 @@ export default function LandingPage() {
                 </div>
               ))}
             </div>
-
 
             <div className="text-center mt-10">
               <a
